@@ -31,3 +31,19 @@ function mergeArrays(array1, array2) {
   }
   return returnArray;
 }
+
+
+function mergesort(array) {
+    if(array.length === 1 || array.length === 0) return array
+
+    if(array.length % 2 === 1) {
+    return mergesort(mergeArrays(array.slice(0, (array.length+1)/2), array.slice((array.length+1)/2, array.length) ))
+    } 
+
+    mergesort(
+      mergeArrays(
+        array.slice(0, (array.length) / 2),
+        array.slice((array.length) / 2, array.length)
+      )
+    );
+}
