@@ -60,6 +60,60 @@ class BinarySearchTree {
     }
     return false;
   }
+
+  breadthFirstSearch() {
+    if (!this.root) return [];
+
+    let queue = [];
+    let visited = [];
+    queue.push(this.root);
+
+    while (queue.length > 0) {
+      console.log(queue);
+      let currentNode = queue.shift();
+      visited.push(currentNode.value);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return visited;
+  }
+
+  DFSPreOrder() {
+    let visited = [];
+    function traverse(node) {
+      visited.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return visited;
+  }
+
+  DFSPostOrder() {
+    let visited = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      visited.push(node.value);
+    }
+    traverse(this.root);
+    return visited;
+  }
+
+  DFSInOrder() {
+    let visited = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      visited.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return visited;
+  }
 }
 
 // let tree = new BinarySearchTree();
